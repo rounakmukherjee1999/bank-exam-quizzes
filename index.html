@@ -1,348 +1,66 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Quiz Challenge — Wrong Number Series</title>
+<title>Bank Exam Quiz Portal</title>
 <style>
-  :root{
-    --bg1:#0f2027; --bg2:#2c5364;
-    --card:#ffffffee; --accent:#6C63FF;
-    --muted:#666;
-    --shadow: 0 10px 30px rgba(10,10,20,0.25);
-    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  }
-  html,body{height:100%;margin:0;background:linear-gradient(135deg,var(--bg1) 0%, var(--bg2) 100%); color:#0b1220;}
-  .wrap{
-    min-height:100vh; display:flex; align-items:center; justify-content:center; padding:30px;
-  }
-  .card{
-    width:100%; max-width:900px; background:linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,250,255,0.95));
-    border-radius:18px; box-shadow:var(--shadow); padding:28px;
-    transform: translateZ(0);
-  }
-
-  /* Header / timer */
-  .topbar{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px;}
-  .title{font-size:1.4rem; font-weight:700; color:#131722; display:flex; align-items:center; gap:10px;}
-  .timer{font-weight:700; font-size:1.05rem; background:linear-gradient(90deg,#ff8a00,#e52e71); color:white; padding:8px 14px; border-radius:999px; box-shadow:0 6px 18px rgba(229,46,113,0.18);}
-
-  /* Question area */
-  .question-wrap{display:flex; gap:22px; align-items:flex-start;}
-  .left-col{flex:1}
-  .q-card{background:var(--card); padding:22px; border-radius:12px; box-shadow: 0 8px 30px rgba(15,20,30,0.06); }
-  .q-number{font-size:.95rem; color:var(--muted); margin-bottom:8px;}
-  .q-text{font-size:1.1rem; font-weight:600; margin-bottom:16px; color:#111;}
-  .options{display:flex; flex-direction:column; gap:10px;}
-  .option{
-    border-radius:10px; padding:12px 14px; cursor:pointer; user-select:none;
-    border:1px solid rgba(10,12,20,0.06); background:white; transition:all .15s ease;
-    display:flex; align-items:center; gap:12px;
-  }
-  .option:hover{transform:translateY(-3px); box-shadow:0 8px 18px rgba(15,20,30,0.06);}
-  .option .opt-letter{width:34px; height:34px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:700; color:var(--accent); background:linear-gradient(180deg,#f3f0ff, #ffffff); border:1px solid rgba(108,99,255,0.12)}
-  .option.selected{background:linear-gradient(90deg, rgba(108,99,255,0.08), rgba(108,99,255,0.02)); border:1px solid rgba(108,99,255,0.18); }
-  .option-label{font-weight:600; color:#0b1220;}
-  .controls{display:flex; justify-content:space-between; align-items:center; margin-top:18px; gap:12px;}
-  .btn{
-    padding:10px 14px; border-radius:10px; font-weight:700; cursor:pointer; border:none; background:linear-gradient(90deg,#6C63FF,#9B8CFF); color:white;
-    box-shadow:0 8px 22px rgba(108,99,255,0.14);
-  }
-  .btn.ghost{background:transparent; color:#333; border:1px solid rgba(10,12,20,0.06); box-shadow:none;}
-  .btn:disabled{opacity:.45; cursor:not-allowed; transform:none; box-shadow:none;}
-
-  /* Landing overlay */
-  .overlay{
-    position:fixed; inset:0; display:flex; align-items:center; justify-content:center;
-  }
-  .landing{
-    width:100%; max-width:760px; background:linear-gradient(180deg,#ffffff, #fbfbff); border-radius:14px; padding:30px; box-shadow:0 18px 60px rgba(6,10,30,0.4); text-align:left;
-  }
-  .landing h1{margin:0 0 8px; font-size:2rem; color:#171824;}
-  .instructions{color:#444; margin:12px 0 18px; line-height:1.5;}
-  .enter-btn{display:inline-block; padding:12px 18px; border-radius:12px; font-weight:800; background:linear-gradient(90deg,#ff6a00,#ff3d81); color:white; border:none; cursor:pointer; box-shadow:0 10px 30px rgba(255,60,120,0.16);}
-
-  /* Footer / progress */
-  .progress{font-size:.95rem; color:var(--muted);}
-  .meta{font-size:.9rem; color:var(--muted)}
-
-  /* Result screen */
-  .result{ text-align:center; padding:30px; }
-  .score{font-size:2.6rem; font-weight:900; color:#0b1220;}
-  .score-sub{color:var(--muted); margin:8px 0 14px;}
-  .restart{margin-top:12px;}
-  @media (max-width:780px){
-    .card{padding:18px}
-    .q-text{font-size:1rem}
-    .option .opt-letter{width:30px;height:30px}
-  }
+body{
+    margin:0;
+    font-family:Arial;
+    background:linear-gradient(135deg,#1e3c72,#2a5298);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    color:white;
+}
+.container{
+    text-align:center;
+}
+h1{
+    margin-bottom:30px;
+}
+.card{
+    background:white;
+    color:#333;
+    padding:30px;
+    border-radius:15px;
+    width:300px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.3);
+}
+button{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:15px;
+    background:#2a5298;
+    color:white;
+}
+button:hover{
+    background:#1e3c72;
+}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="card" role="main" aria-live="polite">
-    <div class="topbar">
-      <div class="title">Quiz Challenge <span style="font-size:.85rem;color:var(--muted);font-weight:600">— Wrong Number Series (20 Qs)</span></div>
-      <div style="display:flex;align-items:center;gap:12px">
-        <div class="meta">One mark per question • No negative marking</div>
-        <div id="timer" class="timer">10:00</div>
-      </div>
-    </div>
 
-    <div id="content">
-      <!-- Quiz area will be injected here -->
-      <div id="quizArea">
-        <div class="question-wrap">
-          <div class="left-col">
-            <div class="q-card">
-              <div class="q-number" id="qNumber">Question 1 of 20</div>
-              <div class="q-text" id="qText">Loading...</div>
-              <div class="options" id="optionsList"></div>
-              <div class="controls">
-                <button id="prevBtn" class="btn ghost">Previous</button>
-                <div style="display:flex; gap:10px; align-items:center;">
-                  <div class="progress" id="progressText">Progress: 0 / 20</div>
-                  <button id="nextBtn" class="btn">Next</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+<div class="container">
+<h1>Bank Exam Quiz Portal</h1>
 
-      <!-- Result -->
-      <div id="resultArea" style="display:none" class="q-card">
-        <div class="result" id="resultContent">
-          <div class="score" id="finalScore">0 / 20</div>
-          <div class="score-sub" id="scorePercent">0%</div>
-          <div id="resultMsg" style="color:var(--muted)">You can review and restart the quiz.</div>
-          <div style="margin-top:18px">
-            <button id="restartBtn" class="btn restart">Restart Quiz</button>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="card">
+<h3>Select Quiz</h3>
 
-  </div>
+<button onclick="location.href='wrong-number-series.html'">
+Wrong Number Series
+</button>
+
+<button onclick="location.href='missing-number-series.html'">
+Missing Number Series
+</button>
+
+</div>
 </div>
 
-<!-- Landing overlay -->
-<div id="landingOverlay" class="overlay" aria-hidden="false">
-  <div class="landing" role="dialog" aria-modal="true" aria-label="Quiz Landing">
-    <h1>Quiz Challenge</h1>
-    <p class="instructions">
-      Welcome! This quiz uses the <strong>Wrong Number Series</strong> questions (20 items) from your uploaded practice paper. <br>
-      Rules:
-      <ul>
-        <li>✔ One mark per question</li>
-        <li>✔ No negative marking</li>
-        <li>✔ 10-minute countdown (auto-submits when time's up)</li>
-        <li>✔ One question is shown at a time — use Previous/Next</li>
-      </ul>
-    </p>
-    <div style="display:flex;gap:12px;align-items:center">
-      <button id="enterBtn" class="enter-btn">ENTER — Start Quiz</button>
-      <div style="color:#777; font-size:.95rem;">Estimated time: 10 minutes</div>
-    </div>
-  </div>
-</div>
-
-<script>
-/*
-  Single-file quiz implementation.
-  Data: 20 "Wrong Number Series" questions (from uploaded file).
-  Correct answers stored as letters a-e (mapped to 0-4).
-*/
-
-const questions = [
-  { q: "1) 1762, 2603, 1978, 2419, 2125, 2299 — which is wrong?", opts:["2603","1978","2419","2125","2299"], letterIndex:3 }, // (d)
-  { q: "2) 489, 857, 1041, 1139, 1179, 1202 — which is wrong?", opts:["489","1041","1139","1179","1202"], letterIndex:2 }, // (c)
-  { q: "3) 169, 176, 190, 225, 299, 436 — which is wrong?", opts:["169","176","190","299","436"], letterIndex:0 }, // (a)
-  { q: "4) 243, 342, 545, 840, 1239, 1738 — which is wrong?", opts:["342","545","840","1239","1738"], letterIndex:1 }, // (b)
-  { q: "5) 141, 142, 145, 161, 284, 1582 — which is wrong?", opts:["141","142","145","161","284"], letterIndex:4 }, // (e)
-  { q: "6) 593, 656, 799, 1054, 1458, 2028 — which is wrong?", opts:["593","799","1054","1458","2028"], letterIndex:3 }, // (d)
-  { q: "7) 19, 30.3, 43.5, 56.1, 69.8, 83.7 — which is wrong?", opts:["19","30.3","43.5","69.8","83.7"], letterIndex:2 }, // (c)
-  { q: "8) 349, 366.28, 388.25, 415.69, 448.44, 490.4 — which is wrong?", opts:["349","366.28","388.25","415.69","448.44"], letterIndex:4 }, // (e)
-  { q: "9) 174, 222, 296, 408, 566, 778 — which is wrong?", opts:["174","222","296","566","778"], letterIndex:0 }, // (a)
-  { q: "10) 542, 726, 923, 1139, 1358, 1584 — which is wrong?", opts:["726","923","1139","1358","1584"], letterIndex:2 }, // (c)
-  { q: "11) 161, 186, 224, 286, 407, 632 — which is wrong?", opts:["161","186","224","407","632"], letterIndex:2 }, // (c)
-  { q: "12) −189, −90, −49, 408, 807, 1306 — which is wrong?", opts:["-90","-49","408","807","1306"], letterIndex:1 }, // (b)
-  { q: "13) 243, 315, 411, 534, 675, 843 — which is wrong?", opts:["243","315","411","534","843"], letterIndex:3 }, // (d)
-  { q: "14) 166, 117, 216, 67, 266, 119 — which is wrong?", opts:["166","117","67","266","119"], letterIndex:4 }, // (e)
-  { q: "15) 184, 273, 383, 532, 733, 999 — which is wrong?", opts:["184","273","383","733","999"], letterIndex:0 }, // (a)
-  { q: "16) 174, 192, 261, 393, 606, 919 — which is wrong?", opts:["174","192","261","606","919"], letterIndex:1 }, // (b)
-  { q: "17) 743, 801, 870, 962, 1085, 1253 — which is wrong?", opts:["743","801","870","962","1085"], letterIndex:3 }, // (d)
-  { q: "18) 164, 206, 216, 276, 264, 354 — which is wrong?", opts:["164","206","216","276","264"], letterIndex:2 }, // (c)
-  { q: "19) 981, 949, 885, 804, 704, 560 — which is wrong?", opts:["981","949","885","704","560"], letterIndex:0 }, // (a)
-  { q: "20) 843, 886, 972, 1044, 1088, 1094 — which is wrong?", opts:["843","972","1044","1088","1094"], letterIndex:4 } // (e)
-];
-
-// State
-let current = 0;
-let answers = new Array(questions.length).fill(null); // store selected index or null
-let timerSeconds = 10 * 60; // 10 minutes
-let timerInterval = null;
-let isQuizStarted = false;
-
-// Elements
-const landing = document.getElementById('landingOverlay');
-const enterBtn = document.getElementById('enterBtn');
-const timerEl = document.getElementById('timer');
-const qNumberEl = document.getElementById('qNumber');
-const qTextEl = document.getElementById('qText');
-const optionsListEl = document.getElementById('optionsList');
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
-const progressText = document.getElementById('progressText');
-const resultArea = document.getElementById('resultArea');
-const resultContent = document.getElementById('resultContent');
-const finalScoreEl = document.getElementById('finalScore');
-const scorePercentEl = document.getElementById('scorePercent');
-const restartBtn = document.getElementById('restartBtn');
-
-// Landing enter
-enterBtn.addEventListener('click', () => {
-  landing.style.display = 'none';
-  startQuiz();
-});
-
-function startQuiz(){
-  isQuizStarted = true;
-  renderQuestion();
-  startTimer();
-}
-
-// Timer
-function startTimer(){
-  updateTimerDisplay();
-  timerInterval = setInterval(()=> {
-    timerSeconds--;
-    if(timerSeconds <= 0){
-      clearInterval(timerInterval);
-      timerSeconds = 0;
-      updateTimerDisplay();
-      // Auto-submit
-      submitQuiz(true);
-    } else {
-      updateTimerDisplay();
-    }
-  }, 1000);
-}
-function updateTimerDisplay(){
-  const mm = Math.floor(timerSeconds / 60).toString().padStart(2,'0');
-  const ss = (timerSeconds % 60).toString().padStart(2,'0');
-  timerEl.textContent = `${mm}:${ss}`;
-}
-
-// Render question
-function renderQuestion(){
-  const q = questions[current];
-  qNumberEl.textContent = `Question ${current+1} of ${questions.length}`;
-  qTextEl.textContent = q.q;
-  optionsListEl.innerHTML = '';
-  q.opts.forEach((opt, idx) => {
-    const div = document.createElement('div');
-    div.className = 'option' + (answers[current] === idx ? ' selected' : '');
-    div.setAttribute('role','button');
-    div.setAttribute('tabindex','0');
-    div.dataset.idx = idx;
-    div.innerHTML = `<div class="opt-letter">${String.fromCharCode(65+idx)}</div><div class="option-label">${opt}</div>`;
-    div.addEventListener('click', ()=> {
-      selectOption(idx);
-    });
-    div.addEventListener('keydown', (e) => {
-      if(e.key === 'Enter' || e.key === ' '){
-        e.preventDefault();
-        selectOption(idx);
-      }
-    });
-    optionsListEl.appendChild(div);
-  });
-  updateControls();
-  progressText.textContent = `Progress: ${answers.filter(a=>a!==null).length} / ${questions.length}`;
-  // focus first option for keyboard users
-  const firstOpt = optionsListEl.querySelector('.option');
-  if(firstOpt) firstOpt.focus();
-}
-function selectOption(idx){
-  answers[current] = idx;
-  // update visuals
-  [...optionsListEl.children].forEach((c, i)=> {
-    c.classList.toggle('selected', i === idx);
-  });
-  progressText.textContent = `Progress: ${answers.filter(a=>a!==null).length} / ${questions.length}`;
-}
-
-// Controls
-prevBtn.addEventListener('click', () => {
-  if(current > 0){
-    current--;
-    renderQuestion();
-  }
-});
-nextBtn.addEventListener('click', () => {
-  if(current < questions.length - 1){
-    current++;
-    renderQuestion();
-  } else {
-    // final question -> submit
-    submitQuiz(false);
-  }
-});
-
-function updateControls(){
-  prevBtn.disabled = current === 0;
-  // change next button text on last
-  nextBtn.textContent = current === questions.length - 1 ? 'Submit' : 'Next';
-}
-
-// Submit
-function submitQuiz(isAuto=false){
-  if(timerInterval) { clearInterval(timerInterval); timerInterval = null; }
-  isQuizStarted = false;
-  // Calculate score
-  let score = 0;
-  for(let i=0;i<questions.length;i++){
-    const sel = answers[i];
-    if(sel !== null && sel === questions[i].letterIndex) score++;
-  }
-  // show result
-  document.getElementById('quizArea').style.display = 'none';
-  resultArea.style.display = 'block';
-  finalScoreEl.textContent = `${score} / ${questions.length}`;
-  const pct = Math.round((score / questions.length) * 100);
-  scorePercentEl.textContent = `${pct}%`;
-  document.getElementById('resultMsg').textContent = isAuto ? "Time's up — quiz auto-submitted." : "You submitted the quiz.";
-  // Optionally show basic feedback
-}
-
-// Restart
-restartBtn.addEventListener('click', () => {
-  // reset state
-  current = 0;
-  answers = new Array(questions.length).fill(null);
-  timerSeconds = 10 * 60;
-  if(timerInterval) clearInterval(timerInterval);
-  document.getElementById('quizArea').style.display = 'block';
-  resultArea.style.display = 'none';
-  // show landing again or start directly? We'll restart directly:
-  startQuiz();
-});
-
-// keyboard: left/right
-document.addEventListener('keydown', (e) => {
-  if(!isQuizStarted) return;
-  if(e.key === 'ArrowRight') { nextBtn.click(); }
-  if(e.key === 'ArrowLeft') { prevBtn.click(); }
-});
-
-// Initialize: show first question on page load but keep overlay up
-renderQuestion();
-
-// Accessibility: If user closes overlay without clicking enter (unlikely), ensure not started
-// (we only start quiz on ENTER click)
-
-</script>
 </body>
 </html>
-
